@@ -1,6 +1,6 @@
 #ifndef LIVRO_H
 #define LIVRO_H
-
+//structs dos livros, listas e arvores relacionadas
 typedef struct{
     char autor[50], titulo[50], email[100];
     int ano,ID,status;
@@ -23,4 +23,6 @@ typedef struct lnode Lnode;
 typedef struct{
     Lnode *root;
 }Sentnodebook;
+//funcoes relacionadas aos livros
+void cadastrolivro(tlivro dados,slivro *sent);
 #endif

@@ -1,6 +1,6 @@
 #ifndef MENU_H
 #define MENU_H
-
-void menu();
+#include "livro.h"
+void menu(slivro sent);
 
 #endif

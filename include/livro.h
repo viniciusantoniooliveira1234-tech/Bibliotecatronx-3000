@@ -21,4 +21,5 @@ void buscacodigo(int id, slivro sent);
 void buscaautor(char *autor, slivro sent);
 void buscaempresitomo(char *email,slivro sent);
 void atualizarlivro(slivro sent, int id);
+void deletarlivro(slivro *sent,int id);
 #endif

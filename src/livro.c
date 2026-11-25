@@ -101,4 +101,39 @@ void atualizarlivro(slivro sent, int id){
         }
         aux= aux->next;
     }
+    if (aux==NULL){
+        printf("ID não encontrado tente novamente!\n");
+    }
 }
+//deletar livro
+void deletarlivro(slivro *sent, int id) {
+    if (sent->head == NULL) {
+        return;
+    }
+    Livro *aux = sent->head;
+    while (aux != NULL) {
+
+        if (aux->info.ID == id) {
+            //ponteiro anterior ou é o primeiro
+            if (aux->prev != NULL) {
+                aux->prev->next = aux->next;
+            } else {
+                sent->head = aux->next;
+            }
+            //proximo ponteiro ou é o ultumo
+            if (aux->next != NULL) {
+                aux->next->prev = aux->prev;
+            } else {
+                sent->tail = aux->prev;
+            }
+
+            free(aux);
+            return;
+        }
+        aux = aux->next;
+    }
+    if(aux==NULL){
+        printf("Id não encontrado");
+    }
+}
+

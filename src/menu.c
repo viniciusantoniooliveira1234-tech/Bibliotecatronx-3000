@@ -14,7 +14,9 @@ void menu(slivro sent,susuario sentu){
     while(loop){
         printf("==============================\n|  escolha umas das opções:  |\n|  1-Cadastro                |\n|  2-Consulta                |\n|  3-Atualização             |\n|  4-Exclusão                |\n|  5-Empréstimo              |\n|  6-Devolução               |\n|  0-Sair                    |\n==============================\n");
         scanf("%d",&loop);
+        //sair
         if (loop==0) break;
+        //cadastrar
         if (loop==1){
             int opcoes;
             printf("==========================================\n|  escolha umas das opções de cadastro:  |\n|  1-Livros                              |\n|  2-Usuários                            |\n|  0-Voltar                              |\n==========================================\n");
@@ -43,6 +45,7 @@ void menu(slivro sent,susuario sentu){
                 sentu.amount++;
             }
         }
+        //consultar
         if (loop==2){
             int opcoes;
             printf("==========================================\n|  escolha umas das opções de consulta:  |\n|  1-Livros                              |\n|  2-Usuários                            |\n|  3-empréstimos                         |\n|  0-voltar                              |\n==========================================\n");
@@ -92,6 +95,7 @@ void menu(slivro sent,susuario sentu){
                 }
             }
         }
+        //atualizar
         if (loop==3){
             printf("==========================================\n|  escolha umas das opções de atualização|\n|  1-Livro                               |\n|  2-Usuário                             |\n|  0-voltar                              |\n==========================================\n");
             int opcoes;
@@ -108,6 +112,25 @@ void menu(slivro sent,susuario sentu){
                 char email[150];
                 scanf(" %149[^\n]",email);
                 atualizaruser(sentu.root,email);
+            }
+        }
+        //exluir
+        if (loop==4){
+            printf("==========================================\n|  escolha umas das opções de exclusão:  |\n|  1-Livro                               |\n|  2-Usuário                             |\n|  0-voltar                              |\n==========================================\n");
+            int opcoes;
+            scanf("%d",&opcoes);
+            if(opcoes==0) continue;
+            if (opcoes==1){
+                int ID;
+                printf("Digite o ID do livro:");
+                scanf("%d",&ID);
+                deletarlivro(&sent,ID);
+            }
+            if (opcoes==2){
+                char email[150];
+                printf("Digite o email:");
+                scanf(" %149[^\n]",email);
+                sentu.root=deletaruser(sentu.root,email);
             }
         }
     }

@@ -20,4 +20,6 @@ void buscausuarioemail(Usuario *root,char *email);
 void buscarusuarionome(Usuario *root,char *nome);
 int buscaemail(Usuario *root,char *email);
 void atualizaruser(Usuario *root,char *email);
+Usuario* deletaruser(Usuario *root, char *email);
+Usuario* organizarexlusao(Usuario *left);
 #endif

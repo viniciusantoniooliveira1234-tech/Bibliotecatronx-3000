@@ -74,6 +74,31 @@ void buscaempresitomo(char *email,slivro sent){
         aux=aux->next;
     }
     if (i==0){
-        printf("Nem um livro com esse autor encontrado :()");
+        printf("Nem um emprestimo encontrado :()");
     }   
+}
+
+void atualizarlivro(slivro sent, int id){
+    Livro *aux = sent.head;
+    while (aux!= NULL){
+        if (aux->info.ID==id){
+            printf("Digite qual dado deseja alterar?(1-título|2-Autor|3-Ano):");
+            int op;
+            scanf("%d",&op);
+            if (op==1){
+                printf("Digite o novo título:");
+                scanf(" %149[^\n]",aux->info.titulo);
+            }
+            if (op==2){
+                printf("Digite o novo autor:");
+                scanf(" %149[^\n]",aux->info.autor);
+            }
+            if (op==3){
+                printf("Digite o novo ano:");
+                scanf("%d",&aux->info.ano);
+            }
+            break;
+        }
+        aux= aux->next;
+    }
 }

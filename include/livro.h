@@ -20,4 +20,5 @@ void cadastrolivro(tlivro dados,slivro *sent);
 void buscacodigo(int id, slivro sent);
 void buscaautor(char *autor, slivro sent);
 void buscaempresitomo(char *email,slivro sent);
+void atualizarlivro(slivro sent, int id);
 #endif

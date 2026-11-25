@@ -81,3 +81,21 @@ int buscaemail(Usuario *root,char *email){
     }
     return 2;
 }
+
+void atualizaruser(Usuario *root,char *email){
+    if (root==NULL){
+        printf("Email não encontrado\n");
+        return;
+    }
+    if (strcasecmp(email,root->info.email)==0){
+        printf("Email encontrado digite o novo nome:");
+        scanf(" %149[^\n]",root->info.nome);
+        return;
+    }
+    if (strcasecmp(email,root->info.email)<0){
+        atualizaruser(root->left,email);
+    }
+    if (strcasecmp(email,root->info.email)>0){
+        atualizaruser(root->right,email);
+    }
+}

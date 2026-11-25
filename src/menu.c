@@ -49,7 +49,7 @@ void menu(slivro sent,susuario sentu){
             scanf("%d",&opcoes);
             if (opcoes ==0) continue;
             if (opcoes==1){
-                printf("==========================================\n|  escolha umas das opções de consulta:  |\n|  1-código                              |\n|  2-autor                               |\n==========================================\n");
+                printf("==========================================\n|  escolha umas das opções de consulta:  |\n|  1-código                              |\n|  2-autor                               |\n|     0-Voltar                       \n==========================================\n");
                 scanf("%d",&opcoes);
                 if (opcoes==1){
                     printf("Digite o ID do livro:");
@@ -67,6 +67,7 @@ void menu(slivro sent,susuario sentu){
             if (opcoes==2){
                 printf("==========================================\n|  escolha umas das opções de consulta:  |\n|  1-email                               |\n|  2-nome                                |\n==========================================\n");
                 scanf("%d",&opcoes);
+                if (opcoes==0) continue;
                 if (opcoes==1){
                     printf("Digite o email:");
                     char email[150];
@@ -89,6 +90,24 @@ void menu(slivro sent,susuario sentu){
                 }else{
                     buscaempresitomo(email,sent);
                 }
+            }
+        }
+        if (loop==3){
+            printf("==========================================\n|  escolha umas das opções de atualização|\n|  1-Livro                               |\n|  2-Usuário                             |\n|  0-voltar                              |\n==========================================\n");
+            int opcoes;
+            scanf("%d",&opcoes);
+            if (opcoes==0)continue;
+            if (opcoes==1){
+                printf("Digite o id do livro que deseja alterar:");
+                int id;
+                scanf("%d",&id);
+                atualizarlivro(sent,id);
+            }
+            if(opcoes==2){
+                printf("Digite o email do usuário que deseja alterar:");
+                char email[150];
+                scanf(" %149[^\n]",email);
+                atualizaruser(sentu.root,email);
             }
         }
     }

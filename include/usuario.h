@@ -19,4 +19,5 @@ void cadastrousuariobst(Usuario **root, Usuario *user);
 void buscausuarioemail(Usuario *root,char *email);
 void buscarusuarionome(Usuario *root,char *nome);
 int buscaemail(Usuario *root,char *email);
+void atualizaruser(Usuario *root,char *email);
 #endif

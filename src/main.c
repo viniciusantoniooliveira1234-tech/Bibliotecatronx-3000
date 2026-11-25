@@ -6,9 +6,13 @@
 
 int main(){
     slivro sent;
+
     sent.amount=0;
     sent.head=NULL;
     sent.tail=NULL;
-    menu(sent);
+    susuario sentu;
+    sentu.root=NULL;
+    sentu.amount=0;
+    menu(sent,sentu);
     return 0;
 }

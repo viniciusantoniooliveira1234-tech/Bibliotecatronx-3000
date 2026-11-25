@@ -7,7 +7,7 @@ void cadastro(){
     
 }
 
-void menu(slivro sent){
+void menu(slivro sent,susuario sentu){
     int loop=1;
     printf("Bibliotecatron-3000\n");
     //loop principal
@@ -24,13 +24,71 @@ void menu(slivro sent){
                 //coletar os dados
                 tlivro dados;
                 printf("Digite o nome do livro:");
-                scanf("%s",dados.titulo);
+                scanf(" %149[^\n]",dados.titulo);
                 printf("Digite o autor do livro:");
-                scanf("%s",dados.autor);
+                scanf(" %149[^\n]",dados.autor);
                 printf("Digite o ano de publicação do livro:");
                 scanf("%d",&dados.ano);
                 cadastrolivro(dados,&sent);
+                sent.amount++;
                 continue;
+            }
+            if (opcoes==2){
+                tusuario data;
+                printf("Digite o nome do novo usuário:");
+                scanf(" %149[^\n]",data.nome);
+                printf("Digite o email:");
+                scanf(" %149[^\n]",data.email);
+                cadastrousuario(&sentu,data);
+                sentu.amount++;
+            }
+        }
+        if (loop==2){
+            int opcoes;
+            printf("==========================================\n|  escolha umas das opções de consulta:  |\n|  1-Livros                              |\n|  2-Usuários                            |\n|  3-empréstimos                         |\n|  0-voltar                              |\n==========================================\n");
+            scanf("%d",&opcoes);
+            if (opcoes ==0) continue;
+            if (opcoes==1){
+                printf("==========================================\n|  escolha umas das opções de consulta:  |\n|  1-código                              |\n|  2-autor                               |\n==========================================\n");
+                scanf("%d",&opcoes);
+                if (opcoes==1){
+                    printf("Digite o ID do livro:");
+                    int id;
+                    scanf("%d",&id);
+                    buscacodigo(id,sent);
+                }
+                if(opcoes==2){
+                    printf("Digite o nome do autor:");
+                    char autor[50];
+                    scanf(" %149[^\n]",autor);
+                    buscaautor(autor,sent);
+                }
+            }
+            if (opcoes==2){
+                printf("==========================================\n|  escolha umas das opções de consulta:  |\n|  1-email                               |\n|  2-nome                                |\n==========================================\n");
+                scanf("%d",&opcoes);
+                if (opcoes==1){
+                    printf("Digite o email:");
+                    char email[150];
+                    scanf(" %149[^\n]",email);
+                    buscausuarioemail(sentu.root,email);
+                }
+                if (opcoes==2){
+                    printf("Digite o nome:");
+                    char nome[150];
+                    scanf(" %149[^\n]",nome);
+                    buscarusuarionome(sentu.root,nome);
+                }
+            }
+            if (opcoes==3){
+                printf("Digite o email que deseja buscar empréstimos:");
+                char email[150];
+                scanf(" %149[^\n]",email);
+                if(buscaemail(sentu.root,email)==0){
+                    printf("Email não existe!! :( )");
+                }else{
+                    buscaempresitomo(email,sent);
+                }
             }
         }
     }

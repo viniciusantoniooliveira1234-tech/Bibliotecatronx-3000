@@ -15,16 +15,65 @@ void cadastrolivro(tlivro dados,slivro *sent){
     livro->info.ID=sent->amount+1;
     livro->info.status=0;
     strcpy(livro->info.titulo,dados.titulo);
+    //caso não seja possível alocar memória
     if(livro==NULL){
         return;
     }
+    //caso seja o primeiro
     if (sent->head==NULL){
         sent->head=livro;
         sent->tail=livro;
         return;
     }
+    //
     sent->tail->next=livro;
     livro->prev=sent->tail;
     sent->tail=livro;
     return;
+}
+
+void buscacodigo(int id, slivro sent){
+    Livro *aux;
+    aux=sent.head;
+    while (aux!=NULL){
+        if(aux->info.ID==id){
+            printf("Livro encontrado:\nnome:%s\nautor:%s\nemail:%s\nano:%d\nID:%d\nstatus:%d\n",aux->info.titulo,aux->info.autor,aux->info.email,aux->info.ano,aux->info.ID,aux->info.status);
+            break;;
+        }
+        aux=aux->next;
+    }
+    if (aux==NULL){
+        printf("Livro não encontrado\n");
+    }
+}
+
+void buscaautor(char *autor, slivro sent){
+    Livro *aux=sent.head;
+    int i=0;
+    while(aux!=NULL){
+        
+        if (strcmp(autor,aux->info.autor)==0){
+            printf("Livro encontrado:\nnome:%s\nautor:%s\nemail:%s\nano:%d\nID:%d\nstatus:%d\n",aux->info.titulo,aux->info.autor,aux->info.email,aux->info.ano,aux->info.ID,aux->info.status);
+            i++;
+        }
+        aux=aux->next;
+    }
+    if (i==0){
+        printf("Nem um livro com esse autor encontrado :()");
+    }
+}
+void buscaempresitomo(char *email,slivro sent){
+    Livro *aux=sent.head;
+    int i=0;
+    while(aux!=NULL){
+        
+        if (strcmp(email,aux->info.email)==0){
+            printf("Livro encontrado:\nnome:%s\nautor:%s\nemail:%s\nano:%d\nID:%d\nstatus:%d\n",aux->info.titulo,aux->info.autor,aux->info.email,aux->info.ano,aux->info.ID,aux->info.status);
+            i++;
+        }
+        aux=aux->next;
+    }
+    if (i==0){
+        printf("Nem um livro com esse autor encontrado :()");
+    }   
 }

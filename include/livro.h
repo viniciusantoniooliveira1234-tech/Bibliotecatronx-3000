@@ -2,7 +2,7 @@
 #define LIVRO_H
 //structs dos livros, listas e arvores relacionadas
 typedef struct{
-    char autor[50], titulo[50], email[100];
+    char autor[150], titulo[150], email[150];
     int ano,ID,status;
 }tlivro;
 
@@ -15,14 +15,9 @@ typedef struct{
     Livro *head, *tail;
     int amount;
 }slivro;
-struct lnode{
-    int ID;
-    struct lnode *left, *right;
-};
-typedef struct lnode Lnode;
-typedef struct{
-    Lnode *root;
-}Sentnodebook;
 //funcoes relacionadas aos livros
 void cadastrolivro(tlivro dados,slivro *sent);
+void buscacodigo(int id, slivro sent);
+void buscaautor(char *autor, slivro sent);
+void buscaempresitomo(char *email,slivro sent);
 #endif

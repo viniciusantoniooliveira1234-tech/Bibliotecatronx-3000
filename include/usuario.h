@@ -1,25 +1,22 @@
 #ifndef USUARIO_H
 #define USUARIO_H
-
+//structs dos usuarios, listas relacionadas
 typedef struct {
-    char email[100], nome[50];
+    char email[150], nome[150];
 }tusuario;
 
 struct usuario{
     tusuario info;
-    struct usuario *next, *prev;
+    struct usuario *left, *right;
 };
 typedef struct usuario Usuario;
 typedef struct{
-    Usuario *head, *tail;
+    Usuario *root;
     int amount;
 }susuario;
-struct snode{
-    int ID;
-    struct snode *left, *right;
-};
-typedef struct snode Snode;
-typedef struct{
-    Snode *root;
-}Sentnodeuser;
+void cadastrousuario(susuario *sent, tusuario data);
+void cadastrousuariobst(Usuario **root, Usuario *user);
+void buscausuarioemail(Usuario *root,char *email);
+void buscarusuarionome(Usuario *root,char *nome);
+int buscaemail(Usuario *root,char *email);
 #endif

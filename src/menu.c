@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 #include "../include/menu.h"
 #include "../include/livro.h"
 #include "../include/usuario.h"
@@ -131,6 +132,49 @@ void menu(slivro sent,susuario sentu){
                 printf("Digite o email:");
                 scanf(" %149[^\n]",email);
                 sentu.root=deletaruser(sentu.root,email);
+            }
+        }
+        //Empréstimo
+        //preferi fazer parte da lógica do imprestimo no menu por causa de usar ambas fucoes do livro e do usuario
+        if (loop==5){
+            printf("Qual o ID do livro que deseja emprestar?:");
+            int id;
+            scanf("%d",&id);
+            Livro *livroe=buscarlivro(sent,id);
+            if (livroe!=NULL){
+                if (livroe->info.status==0){
+                    printf("Digite o email que deseja fazer o empréstimo:");
+                    char email[150];
+                    scanf(" %149[^\n]",email);
+                    if (buscaemail(sentu.root,email)==1){
+                        livroe->info.status=1;
+                        strcpy(livroe->info.email,email);
+                    }else{
+                        printf("Usuario nao encontrado tente novamente\n");
+                    }
+                }else{
+                    printf("Livro não disponivel para emprestimo\n");
+                }
+                
+
+            }else{
+                printf("Livro não encontrado tente novamente\n");
+            }
+        }
+        if(loop==6){
+            printf("Digite o Id do livro a ser devolvido:");
+            int id;
+            scanf("%d",&id);
+            Livro *livroe=buscarlivro(sent,id);
+            if (livroe!=NULL){
+                if (livroe->info.status==1){
+                    livroe->info.status=0;
+                    printf("Livro devolvido com sucesso\n");
+                }else{
+                    printf("Livro ja esta disponivel!\n");
+                }
+            }else{
+                printf("Livro não encontrado\n");
             }
         }
     }

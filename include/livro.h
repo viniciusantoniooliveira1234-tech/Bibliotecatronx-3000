@@ -22,4 +22,5 @@ void buscaautor(char *autor, slivro sent);
 void buscaempresitomo(char *email,slivro sent);
 void atualizarlivro(slivro sent, int id);
 void deletarlivro(slivro *sent,int id);
+Livro* buscarlivro(slivro sent, int id);
 #endif

@@ -136,4 +136,13 @@ void deletarlivro(slivro *sent, int id) {
         printf("Id não encontrado");
     }
 }
-
+//buscar livro para fazer emprestimo
+Livro* buscarlivro(slivro sent, int id){
+    Livro *aux=sent.head;
+    for(;aux!=NULL;aux=aux->next){
+        if(aux->info.ID==id){
+            return aux;
+        }
+    }
+    return NULL;
+}
